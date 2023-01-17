@@ -12,5 +12,4 @@ from matplotlib.pyplot import figure
 
 from alpha_vantage.timeseries import TimeSeries 
 
-    
 print("All libraries loaded")
