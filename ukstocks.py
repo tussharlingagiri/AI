@@ -3,17 +3,16 @@ import json
 import pandas as pd
 
 # function to get historical stock data
-
 def get_stock_data(stock_symbol):
     api_key = 'YOUR_API_KEY'
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={stock_symbol}&apikey={api_key}'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&market=LSE&symbol={stock_symbol}&apikey={api_key}'
     response = requests.get(url)
     if response.status_code != 200:
         return "Error: Invalid stock symbol or API key"
     data = json.loads(response.text)
     return data
 
-
+# function to analyze stock data
 def analyze_stock(stock_data):
     if type(stock_data) == str:
       return stock_data
@@ -33,9 +32,8 @@ def analyze_stock(stock_data):
     else:
         return 'Sell'
 
-
-# list of stock symbols
-stock_symbols = ['AMZN', 'GOOG', 'AAPL', 'MSFT', 'WMT']
+# list of UK stock symbols
+stock_symbols = ['BP.L', 'GSK.L', 'HSBA.L', 'BARC.L', 'VOD.L']
 # lists to store stocks to buy, sell, and hold
 stocks_to_buy = []
 stocks_to_sell = []
